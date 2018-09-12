@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="payment_method_width">75dp</dimen>
+    <dimen name="payment_method_height">80dp</dimen>
+    <dimen name="payment_method_icon_size">36dp</dimen>
+    <dimen name="payment_method_stroke_width">2dp</dimen>
+</resources>

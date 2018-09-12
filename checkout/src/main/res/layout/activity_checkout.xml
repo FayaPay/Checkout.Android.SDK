@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.badoualy.stepperindicator.StepperIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:stpi_stepCount="3"
+        app:stpi_lineDoneColor="?attr/colorPrimary"
+        app:stpi_lineMargin="0dp"
+        app:stpi_lineColor="#7d7d7d"
+        app:stpi_circleStrokeWidth="2dp"
+        app:stpi_circleColor="#7d7d7d"
+        app:stpi_indicatorColor="?attr/colorPrimary"
+        app:stpi_showDoneIcon="false"/>
+
+    <com.fayapay.checkout.views.NoSwipeViewPager
+        android:id="@+id/checkoutViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"/>
+
+</LinearLayout>

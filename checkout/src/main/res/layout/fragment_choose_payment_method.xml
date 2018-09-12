@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/chooseMethodInstructionLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/please_select_the_payment_method_to_use"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/continueBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseMethodInstructionLbl">
+
+        <LinearLayout
+            android:id="@+id/creditCardMethod"
+            android:layout_width="@dimen/payment_method_width"
+            android:layout_height="@dimen/payment_method_height"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/payment_method_bg"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/payment_method_icon_size"
+                android:layout_height="@dimen/payment_method_icon_size"
+                android:contentDescription="@string/credit_card_desc"
+                app:srcCompat="@drawable/ic_credit_card" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bankMethod"
+            android:layout_width="@dimen/payment_method_width"
+            android:layout_height="@dimen/payment_method_height"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/payment_method_bg"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/payment_method_icon_size"
+                android:layout_height="@dimen/payment_method_icon_size"
+                android:contentDescription="@string/credit_card_desc"
+                app:srcCompat="@drawable/ic_bank" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mobileMoneyMethod"
+            android:layout_width="@dimen/payment_method_width"
+            android:layout_height="@dimen/payment_method_height"
+            android:background="@drawable/payment_method_bg"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/payment_method_icon_size"
+                android:layout_height="@dimen/payment_method_icon_size"
+                android:contentDescription="@string/credit_card_desc"
+                app:srcCompat="@drawable/ic_mobile_payment" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/continueBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/checkout_action_btn_bg"
+        android:text="@string/checkout_continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

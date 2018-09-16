@@ -10,7 +10,7 @@ import com.fayapay.checkout.util.ActionListener
 import kotlinx.android.synthetic.main.activity_checkout.*
 import java.util.*
 
-class CheckoutActivity() : AppCompatActivity(), ActionListener {
+internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
     private var navigationStack: Stack<String> = Stack()
     private val pages = listOf(UserDetailsFragment(), ChoosePaymentMethodFragment(), CardPayFragment(), BankPayFragment(), MobileMoneyPayFragment())
 

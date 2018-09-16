@@ -10,7 +10,7 @@ import com.fayapay.checkout.R
 import com.fayapay.checkout.util.CheckoutStage
 import kotlinx.android.synthetic.main.fragment_mobile_money_pay.*
 
-class MobileMoneyPayFragment : CheckoutStage() {
+internal class MobileMoneyPayFragment : CheckoutStage() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

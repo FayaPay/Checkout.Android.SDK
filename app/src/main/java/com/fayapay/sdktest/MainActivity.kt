@@ -3,6 +3,7 @@ package com.fayapay.sdktest
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.fayapay.checkout.FayaPay
 import com.fayapay.checkout.activities.CheckoutActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         checkoutBtn.setOnClickListener {
-            startActivity(Intent(this, CheckoutActivity::class.java));
+            FayaPay.instance.checkout(this);
         }
     }
 }

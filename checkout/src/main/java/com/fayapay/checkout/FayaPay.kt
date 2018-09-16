@@ -6,38 +6,42 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.util.Base64
 import com.fayapay.checkout.activities.CheckoutActivity
+import com.fayapay.checkout.exceptions.FayaPayInitializationException
 import java.security.MessageDigest
 
 class FayaPay {
     companion object {
-        private var _instance : FayaPay? = null
+        private var _instance: FayaPay? = null
 
-        public val instance : FayaPay
-        get() {
-            if(_instance == null)
-                _instance = FayaPay()
+        public val instance: FayaPay
+            get() {
+                if (_instance == null)
+                    _instance = FayaPay()
 
-            return _instance!!
-        }
+                return _instance!!
+            }
     }
 
-    private lateinit var packageName : String
-    private lateinit var signingKeyHash : String
-    private var initialized : Boolean = false
+    private lateinit var packageName: String
+    private lateinit var signingKeyHash: String
+    private var initialized: Boolean = false
 
-    public fun initialize(app : Application){
+    public fun initialize(app: Application) {
         this.packageName = app.packageName;
 
         val info = app.packageManager.getPackageInfo(app.packageName, PackageManager.GET_SIGNATURES)
         info.signatures.forEach {
             val digest = MessageDigest.getInstance("SHA")
             digest.update(it.toByteArray())
-            val hash = Base64.encodeToString(digest.digest(), Base64.DEFAULT)
-            println(hash)
+            signingKeyHash = Base64.encodeToString(digest.digest(), Base64.DEFAULT)
         }
+
+        initialized = true
     }
 
-    public fun checkout(activity:Activity){
-        activity.startActivity(Intent(activity, CheckoutActivity::class.java))
+    public fun checkout(activity: Activity) {
+        if (initialized)
+            activity.startActivity(Intent(activity, CheckoutActivity::class.java))
+        else throw FayaPayInitializationException("FayaPay was never initialized. Please call 'FayaPay.instance.initialize()' before performing any action.")
     }
 }

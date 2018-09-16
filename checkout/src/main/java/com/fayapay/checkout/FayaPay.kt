@@ -27,20 +27,20 @@ class FayaPay {
     private var initialized: Boolean = false
 
     public fun initialize(app: Application) {
-        this.packageName = app.packageName;
+        this.packageName = app.packageName
 
         val info = app.packageManager.getPackageInfo(app.packageName, PackageManager.GET_SIGNATURES)
         info.signatures.forEach {
             val digest = MessageDigest.getInstance("SHA")
             digest.update(it.toByteArray())
-            signingKeyHash = Base64.encodeToString(digest.digest(), Base64.DEFAULT)
+            this.signingKeyHash = Base64.encodeToString(digest.digest(), Base64.DEFAULT)
         }
 
-        initialized = true
+        this.initialized = true
     }
 
     public fun checkout(activity: Activity) {
-        if (initialized)
+        if (this.initialized)
             activity.startActivity(Intent(activity, CheckoutActivity::class.java))
         else throw FayaPayInitializationException("FayaPay was never initialized. Please call 'FayaPay.instance.initialize()' before performing any action.")
     }

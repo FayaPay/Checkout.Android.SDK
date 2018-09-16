@@ -2,9 +2,6 @@
     <string name="app_name">checkout</string>
     <string name="please_select_the_payment_method_to_use">Please select the payment method to use</string>
     <string name="credit_card_desc">credit card</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="checkout_continue">Continue</string>
     <string name="please_enter_your_card_details_to_pay">Please enter your card details to pay</string>
     <string name="card_number">Card number</string>
@@ -13,7 +10,7 @@
     <string name="cvv">CVV</string>
     <string name="bank_pay_instructions">Please select your bank and enter your account number to pay</string>
     <string name="account_number">Account number</string>
-    <string name="checkout_instruction">Please enter your details to checkout</string>
+    <string name="checkout_instruction">Please enter your details</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="email_address">Email address</string>

@@ -17,6 +17,7 @@ class CheckoutActivity() : AppCompatActivity(), ActionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
+        supportActionBar?.title = "Checkout"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         checkoutViewPager.adapter = CheckoutPagerAdapter(pages, supportFragmentManager, this)
         checkoutViewPager.currentItem = 0

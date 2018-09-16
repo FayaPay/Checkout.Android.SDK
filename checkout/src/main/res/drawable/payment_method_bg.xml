@@ -2,17 +2,17 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_focused="true">
         <shape android:shape="rectangle">
-            <corners android:radius="2dp" />
-            <solid android:color="@color/checkoutPrimaryColor" />
+            <corners android:radius="10dp" />
+            <solid android:color="?attr/colorAccent" />
             <size android:width="@dimen/payment_method_width" android:height="@dimen/payment_method_height" />
         </shape>
     </item>
 
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="2dp" />
+            <corners android:radius="10dp" />
             <solid android:color="@android:color/transparent" />
-            <stroke android:color="@color/checkoutPrimaryColor" android:width="@dimen/payment_method_stroke_width" />
+            <stroke android:color="?attr/colorAccent" android:width="@dimen/payment_method_stroke_width" />
             <size android:width="@dimen/payment_method_width" android:height="@dimen/payment_method_height" />
         </shape>
     </item>

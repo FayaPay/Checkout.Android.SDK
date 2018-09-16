@@ -4,4 +4,5 @@
     <color name="checkoutPrimaryColor">#0f4471</color>
     <color name="action_btn_gradient_start">#fafbfc</color>
     <color name="action_btn_gradient_end">#eff3f6</color>
+    <color name="bgColor">#f5f6f8</color>
 </resources>

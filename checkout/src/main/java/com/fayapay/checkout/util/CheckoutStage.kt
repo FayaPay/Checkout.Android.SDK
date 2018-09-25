@@ -8,4 +8,6 @@ open class CheckoutStage : Fragment() {
     open fun setActionListener(actionListener: ActionListener) {
         this.listener = actionListener
     }
+
+    open fun doNavigatedToAnimation(){}
 }

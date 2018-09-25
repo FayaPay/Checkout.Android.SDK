@@ -22,6 +22,7 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
         checkoutViewPager.adapter = CheckoutPagerAdapter(pages, supportFragmentManager, this)
         checkoutViewPager.currentItem = 0
         indicator.currentStep = 0
+        pages[0].doNavigatedToAnimation()
     }
 
     override fun actionPerformed(type: String) {
@@ -30,24 +31,28 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
                 indicator.currentStep = 2
                 checkoutViewPager.currentItem = 2
                 navigationStack.push("11")
+                pages[2].doNavigatedToAnimation()
             }
 
             "bank" -> {
                 indicator.currentStep = 2
                 checkoutViewPager.currentItem = 3
                 navigationStack.push("11")
+                pages[3].doNavigatedToAnimation()
             }
 
             "mobile-money" -> {
                 indicator.currentStep = 2
                 checkoutViewPager.currentItem = 4
                 navigationStack.push("11")
+                pages[4].doNavigatedToAnimation()
             }
 
             "choose-method" -> {
                 indicator.currentStep = 1
                 checkoutViewPager.currentItem = 1
                 navigationStack.push("00")
+                pages[1].doNavigatedToAnimation()
             }
 
             "checkout-complete" -> finishCheckout()
@@ -81,6 +86,7 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
             val whereTo = navigationStack.pop().split("").filter { it.length > 0 }
             indicator.currentStep = whereTo[0].toInt()
             checkoutViewPager.currentItem = whereTo[1].toInt()
+            pages[whereTo[1].toInt()].doNavigatedToAnimation()
         }
 
     }

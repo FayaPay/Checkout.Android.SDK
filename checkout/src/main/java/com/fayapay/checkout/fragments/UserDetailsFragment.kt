@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.OvershootInterpolator
 
 import com.fayapay.checkout.R
 import com.fayapay.checkout.util.CheckoutStage
+import com.github.florent37.viewanimator.ViewAnimator
 import kotlinx.android.synthetic.main.fragment_user_details.*
 
 internal class UserDetailsFragment : CheckoutStage() {
@@ -22,5 +25,13 @@ internal class UserDetailsFragment : CheckoutStage() {
         continueBtn.setOnClickListener {
             listener.actionPerformed("choose-method")
         }
+    }
+
+    override fun doNavigatedToAnimation() {
+        ViewAnimator.animate(userDetailsCardView, continueBtn, instructionLbl)
+                .slideBottom()
+                .interpolator(AnticipateOvershootInterpolator())
+                .duration(700)
+                .start()
     }
 }

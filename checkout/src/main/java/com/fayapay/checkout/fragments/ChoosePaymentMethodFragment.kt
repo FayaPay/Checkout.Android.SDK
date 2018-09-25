@@ -38,7 +38,7 @@ internal class ChoosePaymentMethodFragment() : CheckoutStage() {
     }
 
     override fun doNavigatedToAnimation() {
-        ViewAnimator.animate(choiceCardView, continueBtn, chooseMethodInstructionLbl)
+        ViewAnimator.animate(cardView, continueBtn, instructionLbl)
                 .slideBottom()
                 .interpolator(AnticipateOvershootInterpolator())
                 .duration(700)

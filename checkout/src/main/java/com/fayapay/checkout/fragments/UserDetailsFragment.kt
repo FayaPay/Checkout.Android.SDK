@@ -22,13 +22,14 @@ internal class UserDetailsFragment : CheckoutStage() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        doNavigatedToAnimation()
         continueBtn.setOnClickListener {
             listener.actionPerformed("choose-method")
         }
     }
 
     override fun doNavigatedToAnimation() {
-        ViewAnimator.animate(userDetailsCardView, continueBtn, instructionLbl)
+        ViewAnimator.animate(cardView, continueBtn, instructionLbl)
                 .slideBottom()
                 .interpolator(AnticipateOvershootInterpolator())
                 .duration(700)

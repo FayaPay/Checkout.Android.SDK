@@ -22,7 +22,6 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
         checkoutViewPager.adapter = CheckoutPagerAdapter(pages, supportFragmentManager, this)
         checkoutViewPager.currentItem = 0
         indicator.currentStep = 0
-        pages[0].doNavigatedToAnimation()
     }
 
     override fun actionPerformed(type: String) {

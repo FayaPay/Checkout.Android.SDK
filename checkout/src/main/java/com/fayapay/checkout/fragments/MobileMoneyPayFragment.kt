@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
 
 import com.fayapay.checkout.R
 import com.fayapay.checkout.util.CheckoutStage
+import com.github.florent37.viewanimator.ViewAnimator
 import kotlinx.android.synthetic.main.fragment_mobile_money_pay.*
 
 internal class MobileMoneyPayFragment : CheckoutStage() {
@@ -22,5 +24,13 @@ internal class MobileMoneyPayFragment : CheckoutStage() {
         checkoutBtn.setOnClickListener {
             listener.actionPerformed("checkout-complete")
         }
+    }
+
+    override fun doNavigatedToAnimation() {
+        ViewAnimator.animate(cardView, checkoutBtn, instructionLbl)
+                .slideBottom()
+                .interpolator(AnticipateOvershootInterpolator())
+                .duration(700)
+                .start()
     }
 }

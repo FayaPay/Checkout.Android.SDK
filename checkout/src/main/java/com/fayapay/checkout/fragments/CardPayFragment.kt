@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
 import com.fayapay.checkout.R
-import com.fayapay.checkout.util.CheckoutStage
+import com.fayapay.checkout.presenters.CardPayPresenter
 import com.github.florent37.viewanimator.ViewAnimator
 import kotlinx.android.synthetic.main.fragment_card_pay.*
 
-internal class CardPayFragment : CheckoutStage() {
+internal class CardPayFragment : CardPayPresenter() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

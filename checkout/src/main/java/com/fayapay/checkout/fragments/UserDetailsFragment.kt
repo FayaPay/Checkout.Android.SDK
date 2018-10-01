@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
-import android.view.animation.OvershootInterpolator
 
 import com.fayapay.checkout.R
-import com.fayapay.checkout.util.CheckoutStage
+import com.fayapay.checkout.presenters.UserDetailsPresenter
 import com.github.florent37.viewanimator.ViewAnimator
 import kotlinx.android.synthetic.main.fragment_user_details.*
 
-internal class UserDetailsFragment : CheckoutStage() {
+internal class UserDetailsFragment : UserDetailsPresenter() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

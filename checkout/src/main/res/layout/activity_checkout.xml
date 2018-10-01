@@ -26,7 +26,7 @@
 
     </android.support.v7.widget.CardView>
 
-    <com.fayapay.checkout.views.NoSwipeViewPager
+    <com.fayapay.checkout.customviews.NoSwipeViewPager
         android:id="@+id/checkoutViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

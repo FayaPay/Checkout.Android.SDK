@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
 import android.view.animation.OvershootInterpolator
 import com.fayapay.checkout.R
-import com.fayapay.checkout.util.CheckoutStage
+import com.fayapay.checkout.presenters.ChoosePaymentMethodPresenter
 import com.github.florent37.viewanimator.ViewAnimator
 import kotlinx.android.synthetic.main.fragment_choose_payment_method.*
 
-internal class ChoosePaymentMethodFragment() : CheckoutStage() {
+internal class ChoosePaymentMethodFragment() : ChoosePaymentMethodPresenter() {
     private var nextStep: String = "credit-card"
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

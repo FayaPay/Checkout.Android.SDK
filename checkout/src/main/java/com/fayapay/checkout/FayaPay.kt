@@ -30,7 +30,7 @@ class FayaPay {
             }
 
         fun initialize(app: Application, publishableKey: String) {
-            if (!isInitialized) return
+            if (isInitialized) return
 
             _instance = FayaPay()
 
@@ -70,8 +70,14 @@ class FayaPay {
 
         private fun checkInitialized() {
             if (!isInitialized)
-                throw FayaPayInitializationException("FayaPay was never initialized. Please call 'FayaPay.instance.initialize()' before performing any action.")
+                throw FayaPayInitializationException()
 
+        }
+
+        // this method is used to reset the singleton when testing
+        internal fun reset() {
+
+            _instance = null
         }
     }
 

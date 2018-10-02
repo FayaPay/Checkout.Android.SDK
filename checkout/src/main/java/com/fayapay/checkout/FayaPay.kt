@@ -8,11 +8,13 @@ import android.os.Bundle
 import android.util.Base64
 import com.fayapay.checkout.activities.CheckoutActivity
 import com.fayapay.checkout.exceptions.FayaPayInitializationException
+import com.fayapay.checkout.exceptions.FayaPayInvalidParameterException
 import java.security.MessageDigest
 
 class FayaPay {
     private lateinit var packageName: String
     private lateinit var signingKeyHash: String
+    private lateinit var publishableKey: String
 
     companion object {
         private var _instance: FayaPay? = null
@@ -27,8 +29,8 @@ class FayaPay {
                 return _instance!!
             }
 
-        fun initialize(app: Application) {
-            if(!isInitialized) return
+        fun initialize(app: Application, publishableKey: String) {
+            if (!isInitialized) return
 
             _instance = FayaPay()
 
@@ -40,12 +42,22 @@ class FayaPay {
 
             instance.signingKeyHash = Base64.encodeToString(digest.digest(), Base64.DEFAULT) // todo change this to hex
             instance.packageName = app.packageName
+            instance.publishableKey = publishableKey
         }
 
-        fun checkout(activity: Activity) {
+        fun checkout(activity: Activity, params: CheckoutParams) {
             checkInitialized()
 
-            activity.startActivity(Intent(activity, CheckoutActivity::class.java))
+            if (params.amount != null && params.amount <= 0)
+                throw FayaPayInvalidParameterException("amount", "must be greater than zero")
+
+            val intent = Intent(activity, CheckoutActivity::class.java)
+            intent.putExtra("amount", params.amount)
+            intent.putExtra("currency", params.currency)
+            intent.putExtra("description", params.description)
+            intent.putExtra("icon", params.icon)
+
+            activity.startActivity(intent)
         }
 
         fun complete() {

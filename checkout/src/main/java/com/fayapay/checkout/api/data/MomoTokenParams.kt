@@ -1,6 +1,6 @@
 package com.fayapay.checkout.api.data
 
-internal class MomoTokenParams(val channel: String, val phoneNumber: String,
+internal class MomoTokenParams(val channel: String, country: String,
                                val amount: Int, val currency: String,
-                               country: String, val verificationToken: String) {
+                               val phoneNumber: String, val verificationToken: String) {
 }

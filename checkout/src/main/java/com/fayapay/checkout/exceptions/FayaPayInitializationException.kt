@@ -1,4 +1,4 @@
 package com.fayapay.checkout.exceptions
 
-class FayaPayInitializationException(override val message: String) : Exception() {
+class FayaPayInitializationException(override val message: String) : FayaPayException(message) {
 }

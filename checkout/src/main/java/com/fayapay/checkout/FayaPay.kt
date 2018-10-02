@@ -13,7 +13,7 @@ class FayaPay {
     companion object {
         private var _instance: FayaPay? = null
 
-        public val instance: FayaPay
+        val instance: FayaPay
             get() {
                 if (_instance == null)
                     _instance = FayaPay()
@@ -24,9 +24,12 @@ class FayaPay {
 
     private lateinit var packageName: String
     private lateinit var signingKeyHash: String
-    private var initialized: Boolean = false
+    private var _initialized: Boolean = false
 
-    public fun initialize(app: Application) {
+    val initialized : Boolean
+    get() = initialized
+
+    fun initialize(app: Application) {
         this.packageName = app.packageName
 
         val info = app.packageManager.getPackageInfo(app.packageName, PackageManager.GET_SIGNATURES)
@@ -36,11 +39,11 @@ class FayaPay {
             this.signingKeyHash = Base64.encodeToString(digest.digest(), Base64.DEFAULT)
         }
 
-        this.initialized = true
+        this._initialized = true
     }
 
-    public fun checkout(activity: Activity) {
-        if (this.initialized)
+    fun checkout(activity: Activity) {
+        if (this._initialized)
             activity.startActivity(Intent(activity, CheckoutActivity::class.java))
         else throw FayaPayInitializationException("FayaPay was never initialized. Please call 'FayaPay.instance.initialize()' before performing any action.")
     }

@@ -1,6 +1,6 @@
 package com.fayapay.checkout.fragments
 
-import com.fayapay.checkout.presenters.BankPayPresenter
+import com.fayapay.checkout.presenters.MobileMoneyPayPresenter
 import com.nhaarman.mockito_kotlin.capture
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -11,18 +11,18 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.MockitoAnnotations
 
-class BankPayFragmentTests {
-    private lateinit var presenter: BankPayPresenter
-    private lateinit var view: BankPayPresenter.View
+class MobileMoneyPayFragmentTests {
+    private lateinit var presenter: MobileMoneyPayPresenter
+    private lateinit var view: MobileMoneyPayPresenter.View
 
     @Captor
-    private lateinit var captor: ArgumentCaptor<String>
+    private lateinit var captor : ArgumentCaptor<String>
 
     @Before
     fun setup(){
         MockitoAnnotations.initMocks(this)
         view = mock()
-        presenter = BankPayPresenter(view)
+        presenter = MobileMoneyPayPresenter(view)
     }
 
     @Test

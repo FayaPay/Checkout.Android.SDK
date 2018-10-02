@@ -3,7 +3,6 @@ package com.fayapay.checkout.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
 import com.fayapay.checkout.R
@@ -16,11 +15,11 @@ internal class CardPayFragment : CheckoutStage(), CardPayPresenter.View {
     private val presenter = CardPayPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): android.view.View? {
         return inflater.inflate(R.layout.fragment_card_pay, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         checkoutBtn.setOnClickListener {

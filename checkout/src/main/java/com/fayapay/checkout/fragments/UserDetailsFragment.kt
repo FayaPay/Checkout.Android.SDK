@@ -13,7 +13,8 @@ import com.fayapay.checkout.util.CheckoutStage
 import com.github.florent37.viewanimator.ViewAnimator
 import kotlinx.android.synthetic.main.fragment_user_details.*
 
-internal class UserDetailsFragment : CheckoutStage() {
+internal class UserDetailsFragment : CheckoutStage(), UserDetailsPresenter.View {
+    private val presenter = UserDetailsPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -24,7 +25,7 @@ internal class UserDetailsFragment : CheckoutStage() {
         super.onViewCreated(view, savedInstanceState)
         doNavigatedToAnimation()
         continueBtn.setOnClickListener {
-            listener.actionPerformed("choose-method")
+            presenter.gotoChooseMethod()
         }
     }
 
@@ -34,5 +35,9 @@ internal class UserDetailsFragment : CheckoutStage() {
                 .interpolator(AnticipateOvershootInterpolator())
                 .duration(700)
                 .start()
+    }
+
+    override fun performAction(action: String) {
+        listener.actionPerformed(action)
     }
 }

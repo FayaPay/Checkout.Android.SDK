@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_bank_pay.*
 
 internal class BankPayFragment : CheckoutStage(), BankPayPresenter.View {
     private val presenter = BankPayPresenter(this)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): android.view.View? {
         return inflater.inflate(R.layout.fragment_bank_pay, container, false)

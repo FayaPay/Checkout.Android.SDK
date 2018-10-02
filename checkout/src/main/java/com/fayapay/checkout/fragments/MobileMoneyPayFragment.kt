@@ -13,14 +13,14 @@ import com.fayapay.checkout.util.CheckoutStage
 import com.github.florent37.viewanimator.ViewAnimator
 import kotlinx.android.synthetic.main.fragment_mobile_money_pay.*
 
-internal class MobileMoneyPayFragment : CheckoutStage() {
+internal class MobileMoneyPayFragment : CheckoutStage(), MobileMoneyPayPresenter.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): android.view.View? {
         return inflater.inflate(R.layout.fragment_mobile_money_pay, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         checkoutBtn.setOnClickListener {
             listener.actionPerformed("checkout-complete")
@@ -33,5 +33,9 @@ internal class MobileMoneyPayFragment : CheckoutStage() {
                 .interpolator(AnticipateOvershootInterpolator())
                 .duration(700)
                 .start()
+    }
+
+    override fun notifyActionPerformed(action: String){
+        listener.actionPerformed(action)
     }
 }

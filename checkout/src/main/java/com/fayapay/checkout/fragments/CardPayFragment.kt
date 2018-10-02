@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
 import com.fayapay.checkout.R
 import com.fayapay.checkout.presenters.CardPayPresenter
+import com.fayapay.checkout.util.CheckoutStage
 import com.github.florent37.viewanimator.ViewAnimator
 import kotlinx.android.synthetic.main.fragment_card_pay.*
 
-internal class CardPayFragment : CardPayPresenter() {
+internal class CardPayFragment : CheckoutStage(), CardPayPresenter.View {
+    private val presenter = CardPayPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -20,6 +22,7 @@ internal class CardPayFragment : CardPayPresenter() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         checkoutBtn.setOnClickListener {
             listener.actionPerformed("checkout-complete")
         }
@@ -31,5 +34,9 @@ internal class CardPayFragment : CardPayPresenter() {
                 .interpolator(AnticipateOvershootInterpolator())
                 .duration(700)
                 .start()
+    }
+
+    override fun notifyActionPerformed(action: String) {
+        listener.actionPerformed(action)
     }
 }

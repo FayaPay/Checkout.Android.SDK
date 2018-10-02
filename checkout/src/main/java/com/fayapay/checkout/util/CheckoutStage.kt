@@ -1,9 +1,8 @@
-package com.fayapay.checkout.presenters
+package com.fayapay.checkout.util
 
 import android.support.v4.app.Fragment
-import com.fayapay.checkout.util.ActionListener
 
-open class BasePresenter : Fragment() {
+open class CheckoutStage : Fragment() {
     internal lateinit var listener: ActionListener
 
     open fun setActionListener(actionListener: ActionListener) {
@@ -11,6 +10,4 @@ open class BasePresenter : Fragment() {
     }
 
     open fun doNavigatedToAnimation(){}
-    open fun attachView(){}
-    open fun detachView(){}
 }

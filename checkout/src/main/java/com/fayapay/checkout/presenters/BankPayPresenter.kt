@@ -1,14 +1,11 @@
 package com.fayapay.checkout.presenters
 
-import com.fayapay.checkout.util.ActionListener
-
-open class BankPayPresenter : BasePresenter() {
-    private lateinit var view: VIEW
+open class BankPayPresenter(val view: View) {
     fun checkout(){
-        view.checkoutComplete()
+        view.notifyActionPerformed("checkout-complete")
     }
 
-    interface VIEW{
-        fun checkoutComplete()
+    interface View{
+        fun notifyActionPerformed(action: String)
     }
 }

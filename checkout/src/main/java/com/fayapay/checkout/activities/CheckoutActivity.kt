@@ -6,7 +6,6 @@ import android.view.MenuItem
 import com.fayapay.checkout.R
 import com.fayapay.checkout.adapters.CheckoutPagerAdapter
 import com.fayapay.checkout.fragments.*
-import com.fayapay.checkout.presenters.BasePresenter
 import com.fayapay.checkout.util.ActionListener
 import kotlinx.android.synthetic.main.activity_checkout.*
 import java.util.*

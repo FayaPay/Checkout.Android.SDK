@@ -1,4 +1,4 @@
 package com.fayapay.checkout.presenters
 
-open class MobileMoneyPayPresenter : BasePresenter(){
+open class MobileMoneyPayPresenter{
 }

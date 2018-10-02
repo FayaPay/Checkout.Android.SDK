@@ -26,8 +26,8 @@ class FayaPay {
     private lateinit var signingKeyHash: String
     private var _initialized: Boolean = false
 
-    val initialized : Boolean
-    get() = initialized
+    val initialized: Boolean
+        get() = initialized
 
     fun initialize(app: Application) {
         this.packageName = app.packageName

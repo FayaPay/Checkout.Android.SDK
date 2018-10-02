@@ -17,17 +17,17 @@ class CardPayFragmentTest {
     private lateinit var view: CardPayPresenter.View
 
     @Captor
-    private lateinit var captor : ArgumentCaptor<String>
+    private lateinit var captor: ArgumentCaptor<String>
 
     @Before
-    fun setup(){
+    fun setup() {
         MockitoAnnotations.initMocks(this)
         view = mock()
         presenter = CardPayPresenter(view)
     }
 
     @Test
-    fun itCompletesCheckoutByCallingActionListener(){
+    fun itCompletesCheckoutByCallingActionListener() {
         presenter.checkout()
 
         verify(view).notifyActionPerformed(capture(captor))

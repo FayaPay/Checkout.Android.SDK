@@ -9,5 +9,5 @@ open class CheckoutStage : Fragment() {
         this.listener = actionListener
     }
 
-    open fun doNavigatedToAnimation(){}
+    open fun doNavigatedToAnimation() {}
 }

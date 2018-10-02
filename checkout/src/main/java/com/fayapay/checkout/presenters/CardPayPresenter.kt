@@ -1,11 +1,11 @@
 package com.fayapay.checkout.presenters
 
 open class CardPayPresenter(val view: View) {
-    fun checkout(){
+    fun checkout() {
         view.notifyActionPerformed("checkout-completed")
     }
 
-    interface View{
+    interface View {
         fun notifyActionPerformed(action: String)
     }
 }

@@ -3,10 +3,8 @@ package com.fayapay.checkout.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
-
 import com.fayapay.checkout.R
 import com.fayapay.checkout.presenters.MobileMoneyPayPresenter
 import com.fayapay.checkout.util.CheckoutStage
@@ -35,7 +33,7 @@ internal class MobileMoneyPayFragment : CheckoutStage(), MobileMoneyPayPresenter
                 .start()
     }
 
-    override fun notifyActionPerformed(action: String){
+    override fun notifyActionPerformed(action: String) {
         listener.actionPerformed(action)
     }
 }

@@ -26,10 +26,10 @@ internal class ChoosePaymentMethodFragment() : CheckoutStage(), ChoosePaymentMet
         creditCardMethod.setOnFocusChangeListener { _, focused ->
             presenter.setNextStep(focused, "credit-card", creditCardMethod)
         }
-        bankMethod.setOnFocusChangeListener {_, focused ->
+        bankMethod.setOnFocusChangeListener { _, focused ->
             presenter.setNextStep(focused, "bank", bankMethod)
         }
-        mobileMoneyMethod.setOnFocusChangeListener {_, focused ->
+        mobileMoneyMethod.setOnFocusChangeListener { _, focused ->
             presenter.setNextStep(focused, "mobile-money", mobileMoneyMethod)
         }
 
@@ -50,7 +50,7 @@ internal class ChoosePaymentMethodFragment() : CheckoutStage(), ChoosePaymentMet
         listener.actionPerformed(action)
     }
 
-    override fun scaleUp(view: View){
+    override fun scaleUp(view: View) {
         ViewAnimator.animate(view)
                 .startDelay(100)
                 .scale(1.1f)
@@ -59,7 +59,7 @@ internal class ChoosePaymentMethodFragment() : CheckoutStage(), ChoosePaymentMet
                 .start()
     }
 
-    override fun scaleDown(view: View){
+    override fun scaleDown(view: View) {
         ViewAnimator.animate(view)
                 .scale(1.0f)
                 .duration(300)

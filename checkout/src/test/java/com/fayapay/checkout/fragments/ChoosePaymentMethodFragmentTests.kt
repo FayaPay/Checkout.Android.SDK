@@ -1,7 +1,5 @@
-
 package com.fayapay.checkout.fragments
 
-import android.widget.TextView
 import com.fayapay.checkout.presenters.ChoosePaymentMethodPresenter
 import com.nhaarman.mockito_kotlin.capture
 import com.nhaarman.mockito_kotlin.mock
@@ -21,21 +19,21 @@ class ChoosePaymentMethodFragmentTests {
     lateinit var captor: ArgumentCaptor<String>
 
     @Before
-    fun setup(){
+    fun setup() {
         MockitoAnnotations.initMocks(this)
         view = mock()
         presenter = ChoosePaymentMethodPresenter(view)
     }
 
     @Test
-    fun itCorrectlySetsNextStepOnPaymentMethodFocus(){
+    fun itCorrectlySetsNextStepOnPaymentMethodFocus() {
         presenter.setNextStep(true, "test-step", mock())
 
         Assert.assertEquals("test-step", presenter.nextStep)
     }
 
     @Test
-    fun itCorrectlyCallsWithNextStep_actionListener(){
+    fun itCorrectlyCallsWithNextStep_actionListener() {
         presenter.setNextStep(true, "test-step", mock())
         presenter.gotoNextStep()
 

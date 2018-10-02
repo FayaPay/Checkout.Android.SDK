@@ -11,10 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        FayaPay.instance.initialize(application)
+        FayaPay.initialize(application)
 
         checkoutBtn.setOnClickListener {
-            FayaPay.instance.checkout(this);
+            FayaPay.checkout(this);
         }
     }
 }

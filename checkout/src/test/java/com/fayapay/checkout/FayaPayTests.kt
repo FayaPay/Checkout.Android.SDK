@@ -6,6 +6,6 @@ import org.junit.Test
 class FayaPayTests {
     @Test(expected = FayaPayInitializationException::class)
     fun itWontCheckoutIfUninitialized_Fayapay() {
-        FayaPay.instance.checkout(mock())
+        FayaPay.checkout(mock())
     }
 }

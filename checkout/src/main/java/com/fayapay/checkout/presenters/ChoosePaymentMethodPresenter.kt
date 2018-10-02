@@ -1,6 +1,6 @@
 package com.fayapay.checkout.presenters
 
-open class ChoosePaymentMethodPresenter(val view: View) {
+internal open class ChoosePaymentMethodPresenter(val view: View) {
     var nextStep: String = "credit-card"
 
     fun gotoNextStep() {

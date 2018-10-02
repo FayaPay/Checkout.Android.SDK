@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.view.MotionEvent
 
-class NoSwipeViewPager(ctx: Context, attrs: AttributeSet?) : ViewPager(ctx, attrs) {
+internal class NoSwipeViewPager(ctx: Context, attrs: AttributeSet?) : ViewPager(ctx, attrs) {
     constructor(ctx: Context) : this(ctx, null) {
     }
 

@@ -1,5 +1,5 @@
 package com.fayapay.checkout.util
 
-interface ActionListener {
+internal interface ActionListener {
     fun actionPerformed(type: String): Unit
 }

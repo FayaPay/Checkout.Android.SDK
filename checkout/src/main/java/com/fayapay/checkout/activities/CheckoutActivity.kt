@@ -2,17 +2,43 @@ package com.fayapay.checkout.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.fayapay.checkout.CheckoutParams
 import com.fayapay.checkout.R
 import com.fayapay.checkout.adapters.CheckoutPagerAdapter
+import com.fayapay.checkout.fragments.PaymentMethodFragment
+import com.fayapay.checkout.fragments.UserDetailsFragment
 import com.fayapay.checkout.util.ActionListener
+import com.fayapay.checkout.util.CheckoutStage
 import kotlinx.android.synthetic.main.activity_checkout.*
 
 internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
+    private lateinit var params: CheckoutParams
+    private val pages = mutableListOf<CheckoutStage>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-        viewpager.adapter = CheckoutPagerAdapter(supportFragmentManager, this)
+        params = CheckoutParams(intent.getIntExtra("amount", 0),
+                intent.getStringExtra("currency"), intent.getStringExtra("description"),
+                intent.getIntExtra("icon", R.drawable.input_bg))
+
+        setupPages()
+        viewpager.adapter = CheckoutPagerAdapter(supportFragmentManager, pages, this)
+    }
+
+    private fun setupPages() {
+        val userDetailsFragment = UserDetailsFragment()
+        val bundle = Bundle()
+
+        val icon = if (params.icon == null) R.drawable.ic_bank else params.icon!!
+
+        bundle.putInt("icon", icon)
+        bundle.putString("description", params.description)
+        userDetailsFragment.arguments = bundle
+
+        pages.add(userDetailsFragment)
+        pages.add(PaymentMethodFragment())
     }
 
     override fun actionPerformed(action: String) {

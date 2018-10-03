@@ -3,7 +3,7 @@
     package="com.fayapay.checkout">
 
     <application>
-        <activity android:name=".activities.CheckoutActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activities.CheckoutActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

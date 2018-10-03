@@ -10,7 +10,7 @@ import com.fayapay.checkout.presenters.UserDetailsPresenter
 import com.fayapay.checkout.util.CheckoutStage
 import kotlinx.android.synthetic.main.fragment_user_details.*
 
-internal class UserDetailsFragment : CheckoutStage(), UserDetailsPresenter.View {
+internal class UserDetailsFragment() : CheckoutStage(), UserDetailsPresenter.View {
     private val presenter = UserDetailsPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +20,10 @@ internal class UserDetailsFragment : CheckoutStage(), UserDetailsPresenter.View 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        checkoutDescription.text = arguments!!.get("description").toString()
+        checkoutImage.setImageDrawable(activity!!.resources.getDrawable(arguments!!.getInt("icon")))
+
         continueBtn.setOnClickListener {
             presenter.showPaymentMethods()
         }

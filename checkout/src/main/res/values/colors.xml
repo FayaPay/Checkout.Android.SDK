@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryTextColor">#bb000000</color>
+    <color name="secondaryTextColor">#7d000000</color>
     <color name="checkoutPrimaryColor">#0f4471</color>
     <color name="action_btn_gradient_start">#fafbfc</color>
     <color name="action_btn_gradient_end">#eff3f6</color>
     <color name="bgColor">#f5f6f8</color>
+    <color name="inputStrokeColor">#c4c4c4</color>
+    <color name="inputFocusedStrokeColor">#3C1053</color>
+    <color name="primaryColor">#3C1053</color>
 </resources>

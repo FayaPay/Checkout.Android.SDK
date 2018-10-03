@@ -19,5 +19,6 @@ internal class PaymentMethodFragment : CheckoutStage() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewpager.adapter = PaymentMethodsPagerAdapter(childFragmentManager)
+        tabLayout.setupWithViewPager(viewpager)
     }
 }

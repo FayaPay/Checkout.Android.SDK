@@ -4,9 +4,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.fayapay.checkout.fragments.CardPayFragment
+import com.fayapay.checkout.fragments.MomoPayFragment
 
 class PaymentMethodsPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-    private val pages = listOf(CardPayFragment())
+    private val pages = listOf(CardPayFragment(), MomoPayFragment())
 
     override fun getItem(position: Int): Fragment = pages[position]
 
@@ -15,6 +16,7 @@ class PaymentMethodsPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapte
     override fun getPageTitle(position: Int): CharSequence? {
         when(position){
             0 -> return "Card"
+            1 -> return "Mobile money"
             else -> return super.getPageTitle(position)
         }
     }

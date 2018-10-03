@@ -19,7 +19,7 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
 
     override fun actionPerformed(action: String) {
         when(action){
-            "user-details-completed" -> viewpager.currentItem = 1
+            "user-details-entered" -> viewpager.currentItem = 1
         }
     }
 }

@@ -2,16 +2,30 @@ package com.fayapay.checkout.fragments
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.fayapay.checkout.R
+import com.fayapay.checkout.presenters.UserDetailsPresenter
 import com.fayapay.checkout.util.CheckoutStage
+import kotlinx.android.synthetic.main.fragment_user_details.*
 
-internal class UserDetailsFragment : CheckoutStage() {
+internal class UserDetailsFragment : CheckoutStage(), UserDetailsPresenter.View {
+    private val presenter = UserDetailsPresenter(this)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_user_details, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        continueBtn.setOnClickListener {
+            presenter.showPaymentMethods()
+        }
+    }
+
+    override fun notifyActionPerformed(action: String) {
+        listener.actionPerformed(action)
     }
 }

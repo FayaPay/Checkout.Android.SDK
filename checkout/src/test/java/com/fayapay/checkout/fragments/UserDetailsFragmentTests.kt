@@ -1,36 +1,35 @@
 package com.fayapay.checkout.fragments
 
-import com.fayapay.checkout.presenters.CardPayPresenter
+import com.fayapay.checkout.presenters.UserDetailsPresenter
 import com.nhaarman.mockito_kotlin.capture
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import junit.framework.Assert.assertEquals
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.MockitoAnnotations
 
-class CardPayFragmentTests {
-    private lateinit var presenter : CardPayPresenter
-    private lateinit var view : CardPayPresenter.View
+class UserDetailsFragmentTests {
+    private lateinit var presenter : UserDetailsPresenter
+    private lateinit var view : UserDetailsPresenter.View
 
     @Captor
-    private lateinit var captor : ArgumentCaptor<String>
+    private lateinit var captor: ArgumentCaptor<String>
 
     @Before
     fun setup(){
         MockitoAnnotations.initMocks(this)
         view = mock()
-        presenter = CardPayPresenter(view)
+        presenter = UserDetailsPresenter(view)
     }
 
     @Test
-    fun itShouldCompleteCheckoutCorrectly(){
-        presenter.checkout()
+    fun itShouldShowPaymentMethodsWhenContinueBtnIsClicked(){
+        presenter.showPaymentMethods()
 
         verify(view).notifyActionPerformed(capture(captor))
-        Assert.assertEquals("checkout-completed", captor.value)
+        assertEquals("user-details-entered", captor.value)
     }
 }

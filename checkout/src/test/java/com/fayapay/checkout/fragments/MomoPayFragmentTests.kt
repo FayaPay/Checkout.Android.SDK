@@ -1,10 +1,10 @@
 package com.fayapay.checkout.fragments
 
 import com.fayapay.checkout.presenters.CardPayPresenter
+import com.fayapay.checkout.presenters.MomoPayPresenter
 import com.nhaarman.mockito_kotlin.capture
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
-import junit.framework.Assert.assertEquals
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -12,9 +12,9 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.MockitoAnnotations
 
-class CardPayFragmentTests {
-    private lateinit var presenter : CardPayPresenter
-    private lateinit var view : CardPayPresenter.View
+class MomoPayFragmentTests {
+    private lateinit var presenter : MomoPayPresenter
+    private lateinit var view : MomoPayPresenter.View
 
     @Captor
     private lateinit var captor : ArgumentCaptor<String>
@@ -23,7 +23,7 @@ class CardPayFragmentTests {
     fun setup(){
         MockitoAnnotations.initMocks(this)
         view = mock()
-        presenter = CardPayPresenter(view)
+        presenter = MomoPayPresenter(view)
     }
 
     @Test

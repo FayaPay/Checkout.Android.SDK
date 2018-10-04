@@ -49,6 +49,8 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
                 viewpager.currentItem = 1
                 navigationStack.push(0)
             }
+
+            "checkout-completed" -> finalizeCheckout()
         }
     }
 

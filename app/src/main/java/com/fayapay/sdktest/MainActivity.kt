@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         FayaPay.initialize(application, "")
 
         checkoutBtn.setOnClickListener {
-            FayaPay.checkout(this, CheckoutParams(1, "ghc", "Bich better have my money", R.drawable.ic_bank));
+            FayaPay.checkout(this, 1957, CheckoutParams(1, "ghc", "Bich better have my money", R.drawable.ic_bank));
         }
     }
 }

@@ -12,7 +12,6 @@
     <string name="description">Description</string>
     <string name="select_mobile_network">Select mobile network</string>
     <string name="name_on_card">Name on card</string>
-    <string name="cvv">CVV</string>
     <string name="expiry_date_mm_yy">Expiry date (MM/YY)</string>
 
     <string-array name="banks">

@@ -10,10 +10,12 @@ import com.fayapay.checkout.fragments.UserDetailsFragment
 import com.fayapay.checkout.util.ActionListener
 import com.fayapay.checkout.util.CheckoutStage
 import kotlinx.android.synthetic.main.activity_checkout.*
+import java.util.*
 
 internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
     private lateinit var params: CheckoutParams
     private val pages = mutableListOf<CheckoutStage>()
+    private val navigationStack = Stack<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +44,21 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
     }
 
     override fun actionPerformed(action: String) {
-        when(action){
-            "user-details-entered" -> viewpager.currentItem = 1
+        when (action) {
+            "user-details-entered" -> {
+                viewpager.currentItem = 1
+                navigationStack.push(0)
+            }
         }
+    }
+
+    override fun onBackPressed() {
+        if (!navigationStack.empty()) viewpager.currentItem = navigationStack.pop()
+        else finalizeCheckout()
+    }
+
+    private fun finalizeCheckout() {
+        //setResult(intent.getIntExtra("requestCode", 0), null)
+        finish()
     }
 }

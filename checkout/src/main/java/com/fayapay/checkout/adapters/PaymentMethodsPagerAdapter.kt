@@ -6,9 +6,14 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import com.fayapay.checkout.fragments.CardPayFragment
 import com.fayapay.checkout.fragments.MomoPayFragment
 import com.fayapay.checkout.fragments.MoreMethodsFragment
+import com.fayapay.checkout.util.ActionListener
 
-class PaymentMethodsPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+internal class PaymentMethodsPagerAdapter(listener: ActionListener, fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     private val pages = listOf(CardPayFragment(), MomoPayFragment(), MoreMethodsFragment())
+
+    init{
+        pages.forEach { it.setActionListener(listener) }
+    }
 
     override fun getItem(position: Int): Fragment = pages[position]
 

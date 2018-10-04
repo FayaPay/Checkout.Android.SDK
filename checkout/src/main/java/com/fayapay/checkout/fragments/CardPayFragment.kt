@@ -10,7 +10,8 @@ import com.fayapay.checkout.util.CheckoutStage
 import kotlinx.android.synthetic.main.fragment_card_pay.*
 
 internal class CardPayFragment : CheckoutStage(), CardPayPresenter.View {
-    val presenter = CardPayPresenter(this)
+    private val presenter = CardPayPresenter(this)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_card_pay, container, false)
     }

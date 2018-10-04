@@ -24,31 +24,31 @@ class FayaPayTests {
 
     @Test(expected = FayaPayInitializationException::class)
     fun itWontCheckoutIfUninitialized_Fayapay() {
-        FayaPay.checkout(mock(), CheckoutParams(1, "ghc", "test", null))
+        FayaPay.checkout(mock(), 0, CheckoutParams(1, "ghc", "test", null))
     }
 
     @Test
     fun itWillCheckoutIfAmountIsGreaterThanZero(){
         FayaPay.initialize(app, "")
-        FayaPay.checkout(mock(), CheckoutParams(1, "ghc", "test", null))
+        FayaPay.checkout(mock(), 0, CheckoutParams(1, "ghc", "test", null))
     }
 
     @Test
     fun itWillCheckoutIfAmountIsNull(){
         FayaPay.initialize(app, "")
-        FayaPay.checkout(mock(), CheckoutParams(null, "ghc", "test", null))
+        FayaPay.checkout(mock(), 0, CheckoutParams(null, "ghc", "test", null))
     }
 
     @Test(expected = FayaPayInvalidParameterException::class)
     fun itWontCheckoutIfAmountIsLessThanZero(){
         FayaPay.initialize(app, "")
-        FayaPay.checkout(mock(), CheckoutParams(-1, "ghc", "test", null))
+        FayaPay.checkout(mock(), 0, CheckoutParams(-1, "ghc", "test", null))
     }
 
     @Test(expected = FayaPayInvalidParameterException::class)
     fun itWontCheckoutIfAmountIsEqualToZero(){
         FayaPay.initialize(app, "")
-        FayaPay.checkout(mock(), CheckoutParams(0, "ghc", "test", null))
+        FayaPay.checkout(mock(), 0, CheckoutParams(0, "ghc", "test", null))
     }
 
 }

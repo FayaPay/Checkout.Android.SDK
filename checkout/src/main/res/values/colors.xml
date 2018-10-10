@@ -9,4 +9,5 @@
     <color name="inputStrokeColor">#c4c4c4</color>
     <color name="inputFocusedStrokeColor">#3C1053</color>
     <color name="primaryColor">#3C1053</color>
+    <color name="primaryColorDark">#1c0528</color>
 </resources>

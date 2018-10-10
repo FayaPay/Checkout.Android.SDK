@@ -125,7 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/checkout_action_btn_bg"
+        android:background="@drawable/continue_btn_bg"
         android:text="@string/checkout_continue"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"

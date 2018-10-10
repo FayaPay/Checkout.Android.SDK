@@ -13,6 +13,7 @@
     <string name="select_mobile_network">Select mobile network</string>
     <string name="name_on_card">Name on card</string>
     <string name="expiry_date_mm_yy">Expiry date (MM/YY)</string>
+    <string name="back">Back</string>
 
     <string-array name="banks">
         <item>EcoBank</item>

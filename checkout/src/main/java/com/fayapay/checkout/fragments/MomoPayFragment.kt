@@ -19,9 +19,10 @@ internal class MomoPayFragment : CheckoutStage(), MomoPayPresenter.View {
         super.onViewCreated(view, savedInstanceState)
 
         continueBtn.setOnClickListener { presenter.checkout() }
+        backBtn.setOnClickListener { presenter.navigateBack() }
     }
 
     override fun notifyActionPerformed(action: String) {
-        listener.actionPerformed("checkout-completed")
+        listener.actionPerformed(action)
     }
 }

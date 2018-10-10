@@ -19,9 +19,8 @@ internal class CardPayFragment : CheckoutStage(), CardPayPresenter.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        continueBtn.setOnClickListener {
-            presenter.checkout()
-        }
+        continueBtn.setOnClickListener { presenter.checkout() }
+        backBtn.setOnClickListener { presenter.navigateBack() }
     }
 
     override fun notifyActionPerformed(action: String) {

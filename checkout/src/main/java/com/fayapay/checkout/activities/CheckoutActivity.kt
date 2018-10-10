@@ -50,6 +50,8 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
                 navigationStack.push(0)
             }
 
+            "navigate-back" -> onBackPressed()
+
             "checkout-completed" -> finalizeCheckout()
         }
     }

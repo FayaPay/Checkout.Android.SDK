@@ -24,9 +24,8 @@ internal class UserDetailsFragment() : CheckoutStage(), UserDetailsPresenter.Vie
         checkoutDescription.text = arguments!!.get("description").toString()
         checkoutImage.setImageDrawable(activity!!.resources.getDrawable(arguments!!.getInt("icon")))
 
-        continueBtn.setOnClickListener {
-            presenter.showPaymentMethods()
-        }
+        continueBtn.setOnClickListener { presenter.showPaymentMethods() }
+        backBtn.setOnClickListener { presenter.navigateBack() }
     }
 
     override fun notifyActionPerformed(action: String) {

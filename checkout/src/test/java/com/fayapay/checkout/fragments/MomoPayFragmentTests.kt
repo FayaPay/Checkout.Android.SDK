@@ -33,4 +33,12 @@ class MomoPayFragmentTests {
         verify(view).notifyActionPerformed(capture(captor))
         Assert.assertEquals("checkout-completed", captor.value)
     }
+
+    @Test
+    fun itShouldNavigateBackCorrectly(){
+        presenter.navigateBack()
+
+        verify(view).notifyActionPerformed(capture(captor))
+        Assert.assertEquals("navigate-back", captor.value)
+    }
 }

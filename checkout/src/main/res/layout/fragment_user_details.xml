@@ -135,7 +135,7 @@
 
         <Button
             android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/back_btn_bg"
             android:text="@string/back"
@@ -144,7 +144,7 @@
 
         <Button
             android:id="@+id/continueBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/continue_btn_bg"
             android:text="@string/checkout_continue"

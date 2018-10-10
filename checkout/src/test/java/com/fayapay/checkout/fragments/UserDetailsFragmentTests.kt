@@ -5,6 +5,7 @@ import com.nhaarman.mockito_kotlin.capture
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import junit.framework.Assert.assertEquals
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
@@ -31,5 +32,13 @@ class UserDetailsFragmentTests {
 
         verify(view).notifyActionPerformed(capture(captor))
         assertEquals("user-details-entered", captor.value)
+    }
+
+    @Test
+    fun itShouldNavigateBackCorrectly(){
+        presenter.navigateBack()
+
+        verify(view).notifyActionPerformed(capture(captor))
+        Assert.assertEquals("navigate-back", captor.value)
     }
 }

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Base64
 import com.fayapay.checkout.activities.CheckoutActivity
+import com.fayapay.checkout.api.FayaPayApi
 import com.fayapay.checkout.exceptions.FayaPayInitializationException
 import com.fayapay.checkout.exceptions.FayaPayInvalidParameterException
 import java.security.MessageDigest
@@ -14,7 +15,7 @@ import java.security.MessageDigest
 class FayaPay {
     private lateinit var packageName: String
     private lateinit var signingKeyHash: String
-    private lateinit var publishableKey: String
+    private val api = FayaPayApi()
 
     companion object {
         private var _instance: FayaPay? = null
@@ -42,7 +43,8 @@ class FayaPay {
 
             instance.signingKeyHash = Base64.encodeToString(digest.digest(), Base64.DEFAULT) // todo change this to hex
             instance.packageName = app.packageName
-            instance.publishableKey = publishableKey
+
+            instance.api.initialize(publishableKey)
         }
 
         fun checkout(activity: Activity, requestCode: Int, params: CheckoutParams) {
@@ -72,15 +74,11 @@ class FayaPay {
         private fun checkInitialized() {
             if (!isInitialized)
                 throw FayaPayInitializationException()
-
         }
 
         // this method is used to reset the singleton when testing
         internal fun reset() {
-
             _instance = null
         }
     }
-
-
 }

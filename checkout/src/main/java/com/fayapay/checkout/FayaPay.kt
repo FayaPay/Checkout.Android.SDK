@@ -54,13 +54,10 @@ class FayaPay {
             if (params.amount != null && params.amount <= 0)
                 throw FayaPayInvalidParameterException("amount", "must be greater than zero")
 
+            Checkout.data.params = params
+
             val intent = Intent(activity, CheckoutActivity::class.java)
             intent.putExtra("requestCode", requestCode)
-            intent.putExtra("amount", params.amount)
-            intent.putExtra("currency", params.currency)
-            intent.putExtra("description", params.description)
-            intent.putExtra("icon", params.icon)
-            intent.putExtra("publishableKey", instance.publishableKey)
 
             activity.startActivityForResult(intent, requestCode)
         }

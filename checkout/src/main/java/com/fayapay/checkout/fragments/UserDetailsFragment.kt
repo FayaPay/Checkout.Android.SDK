@@ -13,6 +13,15 @@ import kotlinx.android.synthetic.main.fragment_user_details.*
 internal class UserDetailsFragment() : CheckoutStage(), UserDetailsPresenter.View {
     private val presenter = UserDetailsPresenter(this)
 
+    override val name: String
+        get() = nameTb.text.toString()
+
+    override val email: String
+        get() = emailTb.text.toString()
+
+    override val phone: String
+        get() = phoneTb.text.toString()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_user_details, container, false)

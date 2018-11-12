@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_checkout.*
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
-import org.jetbrains.anko.coroutines.experimental.bg
 import java.util.*
 
 internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
@@ -35,10 +34,10 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
         setupPages()
         viewpager.adapter = CheckoutPagerAdapter(supportFragmentManager, pages, this)
 
-        initializeApi()
+        initialize()
     }
 
-    private fun initializeApi() = launch(CommonPool) {
+    private fun initialize() = launch(CommonPool) {
         val publishableKey = intent.getStringExtra("publishableKey")
         val initSucceeded = FayaPayApi.initialize(publishableKey)
 

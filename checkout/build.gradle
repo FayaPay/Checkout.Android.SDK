@@ -38,8 +38,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.redmadrobot:inputmask:3.4.4'
     implementation 'com.beust:klaxon:3.0.1'
-    implementation 'com.microsoft.aspnet:signalr:0.1.0-preview2-35174'
     implementation 'org.jetbrains.anko:anko-coroutines:0.10.5'
+    implementation 'com.github.kittinunf.fuel:fuel:1.15.1'
 }
 repositories {
     mavenCentral()

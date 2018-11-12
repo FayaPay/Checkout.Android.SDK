@@ -1,8 +1,7 @@
 package com.fayapay.checkout.api
 
 import com.beust.klaxon.Klaxon
-import com.fayapay.checkout.api.data.ApiMessage
-import com.fayapay.checkout.api.data.ApiResponse
+import com.fayapay.checkout.api.responses.ApiResponse
 import com.fayapay.checkout.api.data.MomoTokenParams
 import com.fayapay.checkout.api.data.TokenOwnerDetails
 import com.github.kittinunf.fuel.core.FuelManager
@@ -25,10 +24,10 @@ internal class FayaPayApi {
 
         suspend fun initPhoneVerification(phoneNumber: String) : ApiResponse {
             val response = bg { "SendVerificationCode".httpPost(listOf(Pair("phone", phoneNumber), Pair("country", "gh"))).response()}.await()
-            return ApiResponse(response.second.statusCode == 200, Json.parse<ApiMessage>(String(response.second.data))!!)
+            return ApiResponse(String(response.second.data), response.second.statusCode == 200)
         }
 
-        fun generateMobileMoneyToken(params: MomoTokenParams, tokenOwnerDetails: TokenOwnerDetails): String {
+        suspend fun generateMobileMoneyToken(params: MomoTokenParams, tokenOwnerDetails: TokenOwnerDetails): ApiResponse {
             return ""
         }
 

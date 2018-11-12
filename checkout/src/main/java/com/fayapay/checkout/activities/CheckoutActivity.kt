@@ -1,15 +1,22 @@
 package com.fayapay.checkout.activities
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.fayapay.checkout.CheckoutParams
 import com.fayapay.checkout.R
 import com.fayapay.checkout.adapters.CheckoutPagerAdapter
+import com.fayapay.checkout.api.FayaPayApi
 import com.fayapay.checkout.fragments.PaymentMethodFragment
 import com.fayapay.checkout.fragments.UserDetailsFragment
 import com.fayapay.checkout.util.ActionListener
 import com.fayapay.checkout.util.CheckoutStage
 import kotlinx.android.synthetic.main.activity_checkout.*
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
+import org.jetbrains.anko.coroutines.experimental.bg
 import java.util.*
 
 internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
@@ -27,6 +34,24 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
 
         setupPages()
         viewpager.adapter = CheckoutPagerAdapter(supportFragmentManager, pages, this)
+
+        initializeApi()
+    }
+
+    private fun initializeApi() = launch(CommonPool) {
+        val publishableKey = intent.getStringExtra("publishableKey")
+        val initSucceeded = FayaPayApi.initialize(publishableKey)
+
+        launch(UI) {
+            val intent = Intent()
+            intent.putExtra("message", "Invalid publishable key")
+            intent.putExtra("status", "failed")
+
+            if(!initSucceeded) {
+                setResult(Activity.RESULT_CANCELED, intent)
+                finish()
+            }
+        }
     }
 
     private fun setupPages() {
@@ -62,7 +87,6 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
     }
 
     private fun finalizeCheckout() {
-        //setResult(intent.getIntExtra("requestCode", 0), null)
-        finish()
+
     }
 }

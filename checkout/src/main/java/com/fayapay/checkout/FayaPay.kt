@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Base64
 import com.fayapay.checkout.activities.CheckoutActivity
 import com.fayapay.checkout.api.FayaPayApi
+import com.fayapay.checkout.exceptions.FayaPayException
 import com.fayapay.checkout.exceptions.FayaPayInitializationException
 import com.fayapay.checkout.exceptions.FayaPayInvalidParameterException
 import java.security.MessageDigest
@@ -15,7 +16,7 @@ import java.security.MessageDigest
 class FayaPay {
     private lateinit var packageName: String
     private lateinit var signingKeyHash: String
-    private val api = FayaPayApi()
+    private var publishableKey: String = ""
 
     companion object {
         private var _instance: FayaPay? = null
@@ -31,9 +32,11 @@ class FayaPay {
             }
 
         fun initialize(app: Application, publishableKey: String) {
+            if (publishableKey.isEmpty()) throw FayaPayException("Publishable key cannot be empty.")
             if (isInitialized) return
 
             _instance = FayaPay()
+            instance.publishableKey = publishableKey
 
             val digest = MessageDigest.getInstance("SHA1")
             val info = app.packageManager.getPackageInfo(app.packageName, PackageManager.GET_SIGNATURES) // todo: upgrade sdk and use get_signing_certificates
@@ -43,8 +46,6 @@ class FayaPay {
 
             instance.signingKeyHash = Base64.encodeToString(digest.digest(), Base64.DEFAULT) // todo change this to hex
             instance.packageName = app.packageName
-
-            instance.api.initialize(publishableKey)
         }
 
         fun checkout(activity: Activity, requestCode: Int, params: CheckoutParams) {
@@ -59,6 +60,7 @@ class FayaPay {
             intent.putExtra("currency", params.currency)
             intent.putExtra("description", params.description)
             intent.putExtra("icon", params.icon)
+            intent.putExtra("publishableKey", instance.publishableKey)
 
             activity.startActivityForResult(intent, requestCode)
         }

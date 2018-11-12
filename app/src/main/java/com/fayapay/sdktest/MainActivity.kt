@@ -1,5 +1,6 @@
 package com.fayapay.sdktest
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -21,5 +22,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        println(resultCode == Activity.RESULT_OK)
     }
 }

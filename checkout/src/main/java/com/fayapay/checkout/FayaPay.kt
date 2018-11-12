@@ -58,6 +58,7 @@ class FayaPay {
 
             val intent = Intent(activity, CheckoutActivity::class.java)
             intent.putExtra("requestCode", requestCode)
+            intent.putExtra("publishableKey", instance.publishableKey)
 
             activity.startActivityForResult(intent, requestCode)
         }

@@ -42,7 +42,10 @@ class MomoPayPresenter(private val view: View) {
     private fun sendVerificationCode() = launch(CommonPool) {
         val response = FayaPayApi.initPhoneVerification(view.phone)
         launch(UI) {
-            if (response.success) view.showVerificationLayout();
+            if (response.success) {
+                verificationCodeSent = true
+                view.showVerificationLayout()
+            }
             view.setLoading(false)
         }
     }

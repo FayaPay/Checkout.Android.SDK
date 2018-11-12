@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <com.fayapay.checkout.customviews.NoSwipeViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <ProgressBar
         android:id="@+id/loadingCircle"
@@ -11,9 +16,4 @@
         android:layout_gravity="center"
         android:visibility="gone"/>
 
-    <com.fayapay.checkout.customviews.NoSwipeViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

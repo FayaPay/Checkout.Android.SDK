@@ -23,16 +23,16 @@ internal class FayaPayApi {
         }
 
         suspend fun initPhoneVerification(phoneNumber: String): ApiResponse {
-            val response = bg { "SendVerificationCode".httpPost(listOf(Pair("phone", phoneNumber), Pair("country", "gh"))).response() }.await()
+            val response = bg { "SendVerificationCode".httpPost().jsonBody(Json.toJsonString(mapOf("phone" to phoneNumber, "country" to "gh"))).response() }.await()
             return ApiResponse(String(response.second.data), response.second.statusCode == 200)
         }
 
         suspend fun generateMobileMoneyToken(params: MomoTokenParams, tokenOwnerDetails: TokenOwnerDetails): ApiResponse {
             val response = bg {
-                "CreateMomoSource".httpPost(listOf(Pair("channel", params.channel), Pair("name", tokenOwnerDetails.name),
-                        Pair("email", tokenOwnerDetails.email), Pair("phone", tokenOwnerDetails.phoneNumber),
-                        Pair("country", "gh"), Pair("currency", "ghc"), Pair("amount", params.amount),
-                        Pair("code", params.verificationToken))).response()
+                "CreateMomoSource".httpPost().jsonBody(Json.toJsonString(mapOf("channel" to params.channel, "name" to tokenOwnerDetails.name,
+                        "email" to tokenOwnerDetails.email, "phone" to params.phoneNumber,
+                        "country" to "gh", "currency" to "ghc", "amount" to params.amount,
+                        "code" to params.verificationToken))).response()
             }.await()
 
             return ApiResponse(String(response.second.data), response.second.statusCode == 200)

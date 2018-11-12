@@ -5,9 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.beust.klaxon.Klaxon
 import com.fayapay.checkout.Checkout
-import com.fayapay.checkout.CheckoutParams
 import com.fayapay.checkout.R
 import com.fayapay.checkout.adapters.CheckoutPagerAdapter
 import com.fayapay.checkout.api.FayaPayApi
@@ -67,19 +65,21 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
     }
 
     override fun actionPerformed(action: String) {
-        when (action) {
-            "user-details-entered" -> {
-                viewpager.currentItem = 1
-                navigationStack.push(0)
+        launch(UI) {
+            when (action) {
+                "user-details-entered" -> {
+                    viewpager.currentItem = 1
+                    navigationStack.push(0)
+                }
+
+                "navigate-back" -> onBackPressed()
+
+                "show-loading" -> loadingCircle.visibility = View.VISIBLE
+
+                "hide-loading" -> loadingCircle.visibility = View.GONE
+
+                "checkout-completed" -> finalizeCheckout()
             }
-
-            "navigate-back" -> onBackPressed()
-
-            "show-loading" -> loadingCircle.visibility = View.VISIBLE
-
-            "hide-loading" -> loadingCircle.visibility = View.GONE
-
-            "checkout-completed" -> finalizeCheckout()
         }
     }
 

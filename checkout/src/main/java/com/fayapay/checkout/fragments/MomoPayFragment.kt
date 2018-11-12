@@ -40,11 +40,12 @@ internal class MomoPayFragment : CheckoutStage(), MomoPayPresenter.View {
         if (phone.isEmpty()) {
             Snackbar.make(phoneTb, "Phone number cannot be empty", Snackbar.LENGTH_LONG).show()
             return false;
-        } else if (phone.matches(Regex.fromLiteral("(\\+233|233|0)[2|5][0|4|6|7]\\d{7}"))) {
+        } else if (!Regex("(\\+233|233|0)[2|5][0|3|4|6|7]\\d{7}").matches(phone)) {
             Snackbar.make(phoneTb, "Phone number is invalid", Snackbar.LENGTH_LONG).show()
             return false;
         }
-        else return true
+
+        return true
     }
 
     override fun validateVerificationCode(): Boolean {

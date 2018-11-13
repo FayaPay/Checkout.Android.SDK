@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Base64
 import com.fayapay.checkout.activities.CheckoutActivity
-import com.fayapay.checkout.api.FayaPayApi
 import com.fayapay.checkout.exceptions.FayaPayException
 import com.fayapay.checkout.exceptions.FayaPayInitializationException
 import com.fayapay.checkout.exceptions.FayaPayInvalidParameterException

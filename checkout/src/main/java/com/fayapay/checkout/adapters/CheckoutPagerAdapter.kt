@@ -3,8 +3,6 @@ package com.fayapay.checkout.adapters
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.fayapay.checkout.fragments.PaymentMethodFragment
-import com.fayapay.checkout.fragments.UserDetailsFragment
 import com.fayapay.checkout.util.ActionListener
 import com.fayapay.checkout.util.CheckoutStage
 

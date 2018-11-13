@@ -5,12 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.beust.klaxon.JsonObject
-import com.beust.klaxon.Klaxon
 import com.fayapay.checkout.Checkout
 import com.fayapay.checkout.R
 import com.fayapay.checkout.adapters.CheckoutPagerAdapter
 import com.fayapay.checkout.api.FayaPayApi
+import com.fayapay.checkout.exceptions.FayaPayCheckoutException
 import com.fayapay.checkout.fragments.PaymentMethodFragment
 import com.fayapay.checkout.fragments.UserDetailsFragment
 import com.fayapay.checkout.util.ActionListener
@@ -41,14 +40,7 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
         val initSucceeded = FayaPayApi.initialize(publishableKey)
 
         launch(UI) {
-            val intent = Intent()
-            intent.putExtra("message", "Invalid publishable key")
-            intent.putExtra("status", "failed")
-
-            if (!initSucceeded) {
-                setResult(Activity.RESULT_CANCELED, intent)
-                finish()
-            }
+            if (!initSucceeded) throw FayaPayCheckoutException("Checkout initialization failed. Please ensure your publishable key is valid.")
         }
     }
 

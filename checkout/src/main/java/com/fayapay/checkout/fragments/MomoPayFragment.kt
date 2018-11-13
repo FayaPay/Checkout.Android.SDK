@@ -1,7 +1,6 @@
 package com.fayapay.checkout.fragments
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

@@ -52,7 +52,7 @@ class LoadAccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_load_account)
 
         loadAccountBtn.setOnClickListener {
-            FayaPay.checkout(this, checkoutRequestCode, CheckoutParams(amountEditText.text.toInt(), "ghc",
+            FayaPay.checkout(this, loadAccountRequestCode, CheckoutParams(amountEditText.text.toDecimal(), "ghc",
             "Load your account so you can stand the chance to win millions!",
             R.drawable.fayabet_logo))
         }

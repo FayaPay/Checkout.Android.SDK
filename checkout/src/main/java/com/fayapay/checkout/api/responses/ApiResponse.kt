@@ -6,13 +6,21 @@ import com.beust.klaxon.Parser
 
 internal class ApiResponse(val json: String, val success: Boolean) {
     val error: ErrorResponse?
-    get() = Klaxon().parse<ErrorResponse>(json)
+        get() = Klaxon().parse<ErrorResponse>(json)
 
-    private val jsonObject: JsonObject = Parser().parse(json) as JsonObject
+    private var jsonObject: JsonObject
+
+    init {
+        try {
+            jsonObject = Parser().parse(StringBuilder(json)) as JsonObject
+        } catch (e: Exception) {
+            jsonObject = JsonObject()
+        }
+    }
 
     inline fun <reified T> getData(): T? {
         return Klaxon().parse<T>(json)
     }
 
-    fun get(name: String) : Any? = jsonObject.get(name)
+    fun <T> get(name: String): T? = jsonObject.get(name) as T
 }

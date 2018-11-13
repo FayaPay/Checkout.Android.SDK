@@ -92,7 +92,7 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
 
     private fun finalizeCheckout() {
         val intent = Intent()
-        intent.putExtra("sourceId", Checkout.finalResponse.get("id") as String)
+        intent.putExtra("sourceId", Checkout.finalResponse.get<String>("id"))
 
         setResult(Activity.RESULT_OK, intent)
         finish()

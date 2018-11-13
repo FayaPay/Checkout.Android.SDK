@@ -22,6 +22,7 @@ internal class Checkout {
         fun clear() {
             ownerDetails = null
             source = null
+            params = null
         }
     }
 }

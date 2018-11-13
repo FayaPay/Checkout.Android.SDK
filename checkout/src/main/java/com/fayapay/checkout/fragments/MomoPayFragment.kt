@@ -5,7 +5,9 @@ import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.fayapay.checkout.R
+import com.fayapay.checkout.api.responses.ErrorResponse
 import com.fayapay.checkout.presenters.MomoPayPresenter
 import com.fayapay.checkout.util.CheckoutStage
 import kotlinx.android.synthetic.main.fragment_momo_pay.*
@@ -38,10 +40,10 @@ internal class MomoPayFragment : CheckoutStage(), MomoPayPresenter.View {
 
     override fun validatePhone(): Boolean {
         if (phone.isEmpty()) {
-            Snackbar.make(phoneTb, "Phone number cannot be empty", Snackbar.LENGTH_LONG).show()
+            Toast.makeText(activity, "Phone number cannot be empty", Toast.LENGTH_LONG).show()
             return false;
         } else if (!Regex("(\\+233|233|0)[2|5][0|3|4|6|7]\\d{7}").matches(phone)) {
-            Snackbar.make(phoneTb, "Phone number is invalid", Snackbar.LENGTH_LONG).show()
+            Toast.makeText(activity, "Phone number is invalid", Toast.LENGTH_LONG).show()
             return false;
         }
 
@@ -50,7 +52,7 @@ internal class MomoPayFragment : CheckoutStage(), MomoPayPresenter.View {
 
     override fun validateVerificationCode(): Boolean {
         if(verificationCode.isEmpty()){
-            Snackbar.make(phoneTb, "Verification code cannot be empty", Snackbar.LENGTH_LONG).show()
+            Toast.makeText(activity, "Verification code cannot be empty", Toast.LENGTH_LONG).show()
             return false;
         }
 
@@ -75,5 +77,9 @@ internal class MomoPayFragment : CheckoutStage(), MomoPayPresenter.View {
 
         textView3.visibility = View.VISIBLE;
         verificationCodeTb.visibility = View.VISIBLE;
+    }
+
+    override fun showError(error: ErrorResponse) {
+        Toast.makeText(activity, error.messages[0], Toast.LENGTH_LONG).show()
     }
 }

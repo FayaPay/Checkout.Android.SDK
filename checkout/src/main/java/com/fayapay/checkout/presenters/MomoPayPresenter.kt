@@ -3,6 +3,7 @@ package com.fayapay.checkout.presenters
 import com.fayapay.checkout.Checkout
 import com.fayapay.checkout.api.FayaPayApi
 import com.fayapay.checkout.api.data.MomoTokenParams
+import com.fayapay.checkout.api.responses.ErrorResponse
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
@@ -33,10 +34,15 @@ class MomoPayPresenter(private val view: View) {
         val response = FayaPayApi.generateMobileMoneyToken(MomoTokenParams(view.network.toLowerCase(), "gh", 100, "ghc", view.phone, view.verificationCode),
                 Checkout.data.ownerDetails!!)
 
-        if(response.success) Checkout.data.source = response.getData()
-        Checkout.complete(response)
+        launch(UI) {
+            if (response.success) {
+                Checkout.data.source = response.getData()
+                Checkout.complete(response)
+                view.notifyActionPerformed("checkout-completed")
+            } else view.showError(response.getData<ErrorResponse>()!!)
 
-        launch(UI) { view.notifyActionPerformed("checkout-completed") }
+            view.setLoading(false)
+        }
     }
 
     private fun sendVerificationCode() = launch(CommonPool) {
@@ -59,6 +65,7 @@ class MomoPayPresenter(private val view: View) {
         fun validateVerificationCode(): Boolean
         fun setLoading(loading: Boolean)
         fun showVerificationLayout()
+        fun showError(error: ErrorResponse)
     }
 
 }

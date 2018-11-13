@@ -91,7 +91,8 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
     private fun finalizeCheckout() {
         val intent = Intent()
         intent.putExtra("sourceId", Checkout.finalResponse.getData<Map<String, Any>>()!!["id"].toString())
-        setResult(Activity.RESULT_OK)
+
+        setResult(Activity.RESULT_OK, intent)
         finish()
     }
 }

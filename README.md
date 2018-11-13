@@ -1,6 +1,6 @@
 # fayapay-checkout-sdk
 
-## Install
+## Installation
 
 ```
 repositories {
@@ -13,6 +13,10 @@ dependencies {
 ```
 
 ## Requirements
+
+<ul>
+    <li>minSdkVersion: <strong>Android 4.4 "Kitkat" (SDKv19)</strong></li>
+</ul>
 
 ## Getting started
 
@@ -48,7 +52,9 @@ class LoadAccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_load_account)
 
         loadAccountBtn.setOnClickListener {
-            FayaPay.checkout(this, checkoutRequestCode, CheckoutParams(amountEditText.text.toInt(), "ghc", "Load your account so you can stand the chance to win millions by betting on your favorite team!", R.drawable.fayabet_logo))
+            FayaPay.checkout(this, checkoutRequestCode, CheckoutParams(amountEditText.text.toInt(), "ghc",
+            "Load your account so you can stand the chance to win millions!",
+            R.drawable.fayabet_logo))
         }
     }
 

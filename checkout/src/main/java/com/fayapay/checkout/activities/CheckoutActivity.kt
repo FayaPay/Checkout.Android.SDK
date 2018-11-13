@@ -79,7 +79,10 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
 
     override fun onBackPressed() {
         if (!navigationStack.empty()) viewpager.currentItem = navigationStack.pop()
-        else finalizeCheckout()
+        else {
+            setResult(Activity.RESULT_CANCELED)
+            finish()
+        }
     }
 
     private fun finalizeCheckout() {

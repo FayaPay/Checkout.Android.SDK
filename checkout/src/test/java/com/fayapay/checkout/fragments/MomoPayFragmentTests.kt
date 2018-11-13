@@ -28,7 +28,7 @@ class MomoPayFragmentTests {
 
     @Test
     fun itShouldCompleteCheckoutCorrectly(){
-        presenter.checkout()
+        //presenter.checkout()
 
         verify(view).notifyActionPerformed(capture(captor))
         Assert.assertEquals("checkout-completed", captor.value)

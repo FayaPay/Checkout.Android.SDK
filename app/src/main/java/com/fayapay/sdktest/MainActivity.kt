@@ -23,5 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         println(resultCode == Activity.RESULT_OK)
+        println(data!!.getStringExtra("sourceId"))
     }
 }

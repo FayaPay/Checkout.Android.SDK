@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.beust.klaxon.JsonObject
+import com.beust.klaxon.Klaxon
 import com.fayapay.checkout.Checkout
 import com.fayapay.checkout.R
 import com.fayapay.checkout.adapters.CheckoutPagerAdapter
@@ -90,7 +92,7 @@ internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
 
     private fun finalizeCheckout() {
         val intent = Intent()
-        intent.putExtra("sourceId", Checkout.finalResponse.getData<Map<String, Any>>()!!["id"].toString())
+        intent.putExtra("sourceId", Checkout.finalResponse.get("id") as String)
 
         setResult(Activity.RESULT_OK, intent)
         finish()

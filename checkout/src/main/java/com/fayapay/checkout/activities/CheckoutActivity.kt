@@ -20,7 +20,7 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import java.util.*
 
-internal class CheckoutActivity() : AppCompatActivity(), ActionListener {
+internal class CheckoutActivity : AppCompatActivity(), ActionListener {
     private val params = Checkout.data.params!!
     private val pages = mutableListOf<CheckoutStage>()
     private val navigationStack = Stack<Int>()

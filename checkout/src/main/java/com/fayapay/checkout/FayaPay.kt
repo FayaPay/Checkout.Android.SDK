@@ -10,6 +10,8 @@ import com.fayapay.checkout.activities.CheckoutActivity
 import com.fayapay.checkout.exceptions.FayaPayException
 import com.fayapay.checkout.exceptions.FayaPayInitializationException
 import com.fayapay.checkout.exceptions.FayaPayInvalidParameterException
+import com.fayapay.checkout.util.Validator
+import java.lang.IllegalStateException
 import java.security.MessageDigest
 
 class FayaPay {
@@ -31,6 +33,7 @@ class FayaPay {
             }
 
         fun initialize(app: Application, publishableKey: String) {
+            if(!Validator.hasInternetPermission(app)) throw IllegalStateException("FayaPay accesses the internet. Please add the internet permission to your AndroidManifest.xml")
             if (publishableKey.isEmpty()) throw FayaPayException("Publishable key cannot be empty.")
             if (isInitialized) return
 

@@ -23,7 +23,7 @@ class FayaPay {
         val isInitialized: Boolean
             get() = _instance != null
 
-        val instance: FayaPay
+        private val instance: FayaPay
             get() {
                 checkInitialized()
 
@@ -50,7 +50,7 @@ class FayaPay {
         fun checkout(activity: Activity, requestCode: Int, params: CheckoutParams) {
             checkInitialized()
 
-            if (params.amount != null && params.amount <= 0)
+            if (params.amount <= 0)
                 throw FayaPayInvalidParameterException("amount", "must be greater than zero")
 
             Checkout.data.params = params
